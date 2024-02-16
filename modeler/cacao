@@ -1,0 +1,44 @@
+# Supongamos que estás utilizando una biblioteca ficticia llamada 'bpmnlib'
+
+from bpmnlib import Diagram, Event, Task, Gateway
+
+# Crear un nuevo diagrama BPMN
+diagrama = Diagram()
+
+# Crear elementos
+inicio = Event("Inicio")
+cosecha = Task("Cosecha de Cacao")
+fermentacion = Task("Fermentación")
+secado = Task("Secado")
+tostado = Task("Tostado")
+molienda = Task("Molienda")
+prensado = Task("Prensado")
+molienda_cacao = Task("Molienda de Cacao")
+empaquetado = Task("Empaquetado")
+fin = Event("Fin")
+
+# Añadir elementos al diagrama
+diagrama.add_element(inicio)
+diagrama.add_element(cosecha)
+diagrama.add_element(fermentacion)
+diagrama.add_element(secado)
+diagrama.add_element(tostado)
+diagrama.add_element(molienda)
+diagrama.add_element(prensado)
+diagrama.add_element(molienda_cacao)
+diagrama.add_element(empaquetado)
+diagrama.add_element(fin)
+
+# Conectar los elementos
+diagrama.connect(inicio, cosecha)
+diagrama.connect(cosecha, fermentacion)
+diagrama.connect(fermentacion, secado)
+diagrama.connect(secado, tostado)
+diagrama.connect(tostado, molienda)
+diagrama.connect(molienda, prensado)
+diagrama.connect(prensado, molienda_cacao)
+diagrama.connect(molienda_cacao, empaquetado)
+diagrama.connect(empaquetado, fin)
+
+# Generar el diagrama
+diagrama.generate()
